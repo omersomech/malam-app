@@ -65,7 +65,8 @@ export default async function Home({
   searchParams: SearchParams;
 }) {
   let filters = {};
-  if (!searchParams.search && !searchParams.offset) {
+  let search = searchParams.search ? searchParams.search : "";
+  if (!search && !searchParams.offset) {
     filters = Object.entries(searchParams).reduce((acc, [key, value]) => {
       if (value !== undefined && value !== null) acc[key] = value;
       return acc;
@@ -83,7 +84,7 @@ export default async function Home({
         body: JSON.stringify({
           resource_id: "053cea08-09bc-40ec-8f7a-156f0677aff3",
           filters: { ...filters },
-          q: searchParams.search,
+          q: search,
           distinct: true,
           plain: true,
           limit: 10,
