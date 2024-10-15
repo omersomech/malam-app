@@ -87,7 +87,7 @@ export default async function Home({
           q: search,
           distinct: true,
           plain: true,
-          limit: 10,
+          limit: 5,
           offset: searchParams.offset,
           fields: [],
           sort: "",
